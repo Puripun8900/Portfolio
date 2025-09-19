@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puripan Leelapong-Anan - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #059669;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #059669;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #059669;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: #f9fafb;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #059669;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #ecfdf5;
+            color: #059669;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #f9fafb;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .project-role {
+            background: #059669;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .demo-link {
+            background: #059669;
+            color: white;
+        }
+
+        .demo-link:hover {
+            background: #047857;
+        }
+
+        .github-link {
+            background: #374151;
+            color: white;
+        }
+
+        .github-link:hover {
+            background: #1f2937;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: #f9fafb;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #059669;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-date {
+            background: #059669;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            color: #059669;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-date {
+                left: 20px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Puripan L.</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/picture%20for%20portfolio.jpg-SJmu9SnvfE3cbdMUbGSjt4dnPYlr9f.jpeg" alt="Puripan Leelapong-Anan" class="profile-image">
+            <h1>Puripan Leelapong-Anan</h1>
+            <p>Industrial IT Engineering Student | Web Developer | IoT Enthusiast</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a dedicated Industrial IT Engineering student at LAB University of Applied Sciences in Finland, with a strong passion for web development and digital solutions. My technical expertise spans across embedded systems, frontend development, and IoT technologies. I am actively seeking internship opportunities to apply my skills in real-world industrial environments while continuing to grow both personally and professionally.</p>
+                <br>
+                <p>My experience includes developing interactive web platforms, working with IoT sensor systems, and contributing to international team projects. I am particularly interested in the intersection of industrial automation and modern web technologies, making me an ideal candidate for innovative packaging and automation companies like Sunrob Packaging Ltd.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">HTML</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">IoT Systems</span>
+                        <span class="skill-tag">Raspberry Pi</span>
+                        <span class="skill-tag">Sensor Integration</span>
+                        <span class="skill-tag">Wokwi Simulation</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Thai (Native)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Smart Gym IoT System</h3>
+                        <div class="project-role">Embedded Systems Developer</div>
+                        <p class="project-description">
+                            Developed a comprehensive IoT system for smart gym management. My primary role involved integrating and configuring sensors with Raspberry Pi Pico, implementing sensor communication protocols, and handling embedded data processing. The system monitors gym equipment usage and provides real-time analytics for facility management.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://smartgym-m.azurewebsites.net/login.html" class="project-link demo-link" target="_blank">Live Demo</a>
+                            <a href="https://github.com/Puripun8900/Group-M" class="project-link github-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Finnish Language Learning Platform</h3>
+                        <div class="project-role">Frontend Developer</div>
+                        <p class="project-description">
+                            Created an interactive web platform to help users learn Finnish at the A1 level with a "Workplace Break Room" theme. I was responsible for implementing the frontend code, creating responsive user interfaces, and integrating interactive learning modules. The platform features custom images and real-life conversation scenarios for practical language learning.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://arch-promchan.github.io/Language-Centre/" class="project-link demo-link" target="_blank">Live Demo</a>
+                            <a href="https://github.com/Arch-Promchan/Language-Centre/tree/frontend" class="project-link github-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">LAB University of Applied Sciences</h3>
+                        <p class="timeline-subtitle">Industrial IT Engineering Student</p>
+                        <p class="timeline-description">Currently pursuing a degree in Industrial IT Engineering with focus on automation systems, web development, and IoT technologies. Maintaining strong academic performance while actively participating in practical projects and international collaborations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Language Center Project</h3>
+                        <p class="timeline-subtitle">Frontend Developer - University Project</p>
+                        <p class="timeline-description">Developed an interactive Finnish language learning platform as part of university coursework. Implemented responsive frontend interfaces and interactive learning modules to create an engaging educational experience.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Smart Gym IoT System</h3>
+                        <p class="timeline-subtitle">Embedded Systems Developer - Team Project</p>
+                        <p class="timeline-description">Led the embedded systems development for a comprehensive IoT gym management system. Integrated sensors with Raspberry Pi Pico and implemented data handling solutions for real-time equipment monitoring.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Telus International</h3>
+                        <p class="timeline-subtitle">Audio Evaluation Specialist - Onsite, Tampere</p>
+                        <p class="timeline-description">Worked onsite in Tampere conducting audio evaluation and comparison for AI systems. Contributed to improving AI audio processing capabilities through detailed analysis and quality assessment of audio data.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Hamilton Boys High School</h3>
+                        <p class="timeline-subtitle">International Exchange Student</p>
+                        <p class="timeline-description">Completed international exchange program in Hamilton, New Zealand, developing cross-cultural communication skills and global perspective that enhances my ability to work in international environments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2014 - 2023</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Vajiravudh College</h3>
+                        <p class="timeline-subtitle">Secondary Education</p>
+                        <p class="timeline-description">Completed comprehensive secondary education in Bangkok, Thailand, building strong foundation in mathematics, sciences, and critical thinking skills that support my current engineering studies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">Ready to contribute to innovative projects and grow in the industrial automation field</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>Puripan.Leelapong-Anan@student.lab.fi</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>+358 41 721 6951</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Lappeenranta, Finland</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Status</h3>
+                    <p>Available for Internship Opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
